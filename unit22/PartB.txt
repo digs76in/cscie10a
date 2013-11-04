@@ -1,0 +1,23 @@
+B1.
+
+a) The '@' symbol cannot be used in a variable name
+b) The '-' symbol cannot be used in a variable name because it is an operator in Java
+c) The word 'for' cannot be used as a variable name because it is a reserved word in Java.
+
+B2.
+
+Foo = 5
+Foo = 6
+Bar = 0
+Bar = 81
+
+B3.
+
+inner * outer + ' '
+
+B4.
+
+a) 3
+b) 6.1
+c) 2
+d) -37.5

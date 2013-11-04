@@ -1,0 +1,25 @@
+Q20: In a short paragraph, tell us what your project does (or how to use it). In one or  more longer paragraphs, explain how your project works, noting the purpose of each sprite and script. Alternatively, use the new “commenting” feature of Scratch and incorporate typed comments into your actual scripts.
+
+A20: For my project I chose to implement the classic game 'Asteroids' in Scratch. The premise of the game is that there is a spaceship being bombarded by asteroids. If the spaceship makes contact with a single asteroid, the ship will explode. The spaceship has been equipped with a nav system and a laser gun that can destroy asteroids. Generally speaking, if an asteroid is shot, it will explode. However, if the asteroid is significantly large enough, it will break into a number of smaller asteroids. For each asteroid shot, the player gets a single point. The game is divided into levels, each of which is increasingly more difficult. In order to beat a level, one must destroy all asteroids on the screen without making contact with any of them.
+
+
+Q21: Roughly how much time did you spend implementing username.sb2 for problem 18 above?
+
+A20: I estimate that I spent 1-2 hours implementing the game. I created an initial version of the game (which is posted on my Scratch account), but I refactored it to look and feel more like the authentic game.
+
+Q22: Did you base username.sb2 on some project that came with Scratch or that was demonstrated in lecture? If so, which one? 
+
+A22: The work is entirely my own, but I can hardly take credit for the concept. Asteroids is a classic space-shooter game that has had countless implementations. I've implemented the game previously in JavaScript, but I didn't template my work off of any previous Scratch renditions.
+
+
+Q23: In one or two short paragraphs, tell us what you think of Scratch. Do you like it?  What’s good about it? What’s bad about it? Did you enjoy implementing username.sb2? 
+
+A23: Frankly, I actually enjoyed Scratch much more than I thought I would. I thought I'd miss some of the lower-level flexibility programming has to offer, but Scratch provides a nice conceptual interface to programming that made it really easy to use. After awhile, the drag and drop interface did become cumbersome, but I felt like I was able to visualize some of the logic of the game better than I could have if I were implementing it in an actual programming language.
+
+Q24: In a short paragraph, what (if anything) did you learn by using Scratch? 
+
+A24: I learned a lot about the internals of Scratch. I had never heard of it prior to taking this course, and I find it fascinating that it has such a devoted and thriving community. I love the fact that it creates a friendlier interface to programming that allows people to learn some of the fundamentals of programming rather than just diving headlong into a programming language.
+
+Q25: In implementing username.sb2, with what concepts or implementation details did you struggle? Why?
+
+A25: I had to do a little bit of Googling to refresh my memory on some of the formulas for velocity, acceleration, etc. Outside of that, I ran into some issues getting the collision detection right. In the case that one has two sprite clones that need to be deleted upon collision with one another, Scratch doesn't provide a nice API for deleting both sequentially. I found that I had to insert strange shims like 'wait until not touching' in order to get both clones to delete themselves. This was especially problematic in light of the 300 clone limit. Due to the nature of the game (bullets firing and asteroids breaking into more asteroids), I sometimes hit the ceiling on creating clones.

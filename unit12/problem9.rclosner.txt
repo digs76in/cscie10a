@@ -1,0 +1,10 @@
+Problem 9
+
+Q1. What will the following Scratch program cause the sprite to “say” at the end?
+A1. 26
+
+Q2: Suppose we change the number 18 to 25 and run the program again? What will the sprite “say” at the end?
+A2: 26
+
+Q3: What if we change the 18 to 100 and run the program?
+A3: 677

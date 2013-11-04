@@ -1,0 +1,56 @@
+B1.
+
+She said, "Never put off till tomorrow ... 
+What you can do
+The day
+After tomorrow!"
+
+B2.
+
+a) 3 + 4
+b) 7
+c) 34
+
+B3.
+
+The program raises an error at compile time because 'computeSum' attempts to utilize variables that are defined ('x' and 'y') outside of its scope. Due to the way Java is designed, 'x' and 'y' are exist only within the scope of the function in which they were defined. Given that the variables 'x' and 'y' are not passed to 'computeSum' (or defined within the scope of the 'computeSum' function) they are considered to be undefined consequently throwing an error upon compilation.
+
+B4.
+
+System.out.print((5/9) * (fahrenheit - 32) + 273.16);
+
+B5.
+
+a) 10
+b) 21
+c) 10
+
+B6.
+
+a)
+
+Inside first method!
+Inside third method!
+Inside first method!
+Inside second method!
+Inside first method!
+Inside second method!
+Inside first method!
+Inside third method!
+Inside first method!
+Inside second method!
+Inside first method!
+
+b)
+
+Inside first method!
+Inside first method!
+Inside second method!
+Inside first method!
+Inside third method!
+Inside second method!
+Inside first method!
+Inside first method!
+Inside second method!
+Inside first method!
+Inside third method!
