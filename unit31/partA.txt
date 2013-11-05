@@ -1,0 +1,59 @@
+A1.
+
+if ( age >= 22 && age <= 44 && isMale && !isASmoker && height < 72 && weight < 160 && isGoodLooking && isAbleToRelocate) {
+  System.out.println("Marry me!");
+} else {
+  System.out.println("Get Lost!");
+}
+
+A2.
+
+x == 0 && y == 0
+
+
+A3.
+
+while ((i < 10) && (j*j != 25)) {
+  i++;
+  ++j;
+  System.out.println( i * j);
+}
+
+A4.
+
+____________________________________________________
+| p | q | r | (p && q) || (!r) | !(p && (q || !r)) |
+----------------------------------------------------
+| f | f | f | t                | t                 |
+----------------------------------------------------
+| f | f | t | f                | t                 |
+----------------------------------------------------
+| f | t | f | t                | t                 |
+----------------------------------------------------
+| t | f | f | t                | f                 |
+----------------------------------------------------
+| t | t | f | t                | f                 |
+----------------------------------------------------
+| f | t | t | f                | t                 |
+----------------------------------------------------
+| t | f | t | f                | t                 |
+----------------------------------------------------
+| t | t | t | t                | f                 |
+----------------------------------------------------
+
+A5.
+
+static boolean isJavaIdentifierStart (char ch)
+{
+  boolean result = false;
+
+  if (Character.isLetter(ch)) {
+    result = true;
+  } else if (Character.getType(ch) == Character.CURRENCY_SYMBOL) {
+    result = true; 
+  } else if (Character.getType(ch) == Character.CONNECTOR_PUNCTUATION) {
+    result = true; 
+  }
+
+  return result;
+}
