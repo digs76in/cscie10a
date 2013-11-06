@@ -66,7 +66,7 @@ class Guess
                 min = guess;
             } else if (letter == 'c') {
                 guessing = false;
-                System.out.print("I got it after making just " + guesses + " guesses");
+                System.out.println("I got it after making just " + guesses + " guesses");
             } else {
                 System.out.println("Invalid answer.");
             }

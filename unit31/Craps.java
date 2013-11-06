@@ -77,7 +77,7 @@ class Craps
         private void lose ()
         {
             playing = false; 
-            System.out.print("YOU LOSE!");
+            System.out.println("YOU LOSE!");
         }
 
         /**
@@ -87,7 +87,7 @@ class Craps
         private void win ()
         {
             playing = false; 
-            System.out.print("YOU WIN!");
+            System.out.println("YOU WIN!");
         }
 
         /**
