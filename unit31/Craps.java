@@ -13,177 +13,78 @@ class Craps
 
     public static void main (String[] args)
     {
-        Game game = new Game();
-        game.play();
-    }
+        // Instantiate the variables.
 
+        boolean playing = true;
+        int value1 = 0;
+        int value2 = 0;
+        int total = 0;
+        int point = 0;
 
-    /**
-     * A Craps Game
-     **/
+        // Loop until the game is over.
 
-    private static class Game
-    {
-        // The established point;
+        while(playing) {
+            // Roll the dice
 
-        private int point = 0;
+            value1 = randomInt();
+            value2 = randomInt();
+            total = value1 + value2;
 
-        // The dice
+            System.out.println("Computer rolls a " + value1 + " and a " + value2 + ", for a total of " + total);
 
-        private final Die dieOne = new Die();
-        private final Die dieTwo = new Die();
+            // End the game if a 7 is rolled.
 
-        // A flag that reflects whether the game has ended.
+            if ( isBadNumber(total) ) {
+                playing = false;
+                System.out.println("YOU LOSE!");
+                continue;
+            }
 
-        private boolean playing = true;
+            // Establish the point or end the game.
 
-        /**
-         * Plays the game
-         **/
-        void play () 
-        {
-            while(playing) {
-
-                // Roll the dice
-
-                int total = rollDice(); 
-
-                // If bad number is rolled, end the game.
-
-                if (isBadNumber(total)) {
-                    lose();
-                    continue;
-                }
-
-                // If good number is rolled, end the game or establish the new point.
-
-                if (isGoodNumber(total)) {
-
-                    // If winning number is rolled then end the game, else establish point.
-
-                    if (isWinningNumber(total)) {
-                        win();
-                    } else {
-                        establishPoint(total);
-                    }
+            if ( isGoodNumber(total) ) {
+                if (point == total) {
+                    playing = false;
+                    System.out.println("YOU WIN!");
+                } else {
+                    point = total; 
+                    System.out.println( point + " is now the established point.");
                 }
             }
         }
-
-        /**
-         * Ends the game and prints losing message.
-         **/
-
-        private void lose ()
-        {
-            playing = false; 
-            System.out.println("YOU LOSE!");
-        }
-
-        /**
-         * Ends the game and prints winning message.
-         **/
-
-        private void win ()
-        {
-            playing = false; 
-            System.out.println("YOU WIN!");
-        }
-
-        /**
-         * Sets the current point to value
-         * @param value the value to which the point should be set
-         **/
-
-        private void establishPoint (int value)
-        {
-            point = value;
-            System.out.println( point + " is now the established point.");
-        }
-
-        /**
-         * Determines whether the value is within set { 4, 5, 6, 8, 9, 10 }.
-         * @param n the value to compare
-         * @return  whether the value is a good number.
-         **/
-
-        private boolean isGoodNumber (int n)
-        {
-            return (n == 4 || n == 5 || n == 6 || n == 8 || n == 9 || n == 10);
-        }
-
-        /**
-         * Determines whether the value is equal to 7.
-         * @param n the value to compare
-         * @return  whether the value is a bad number
-         **/
-
-        private boolean isBadNumber(int n)
-        {
-            return n == 7; 
-        }
-
-        /**
-         * Determines whether the value is equal to the established point
-         * @param n the value to compare
-         * @return  whether the value is equal to the established point
-         **/
-
-        private boolean isWinningNumber(int n)
-        {
-            return n == point;
-        }
-
-        /**
-         * Rolls the dice and calculates the total.
-         * @return the sum of the two rolled dice values.
-         **/
-
-        private int rollDice ()
-        {
-            dieOne.roll(); 
-            dieTwo.roll();
-
-            int total = dieOne.value + dieTwo.value;
-
-            System.out.println("Computer rolls a " + dieOne.value + " and a " + dieTwo.value + ", for a total of " + total);
-
-            return total;
-        }
-
     }
 
     /**
-     * A Craps Die
+     * Determines whether the value is within set { 4, 5, 6, 8, 9, 10 }.
+     * @param n the value to compare
+     * @return  whether the value is a good number.
      **/
-    private static class Die
+
+    private static boolean isGoodNumber (int n)
     {
-        // The maximum allowed value
+        return (n == 4 || n == 5 || n == 6 || n == 8 || n == 9 || n == 10);
+    }
 
-        private int MAX_VALUE = 6;
+    /**
+     * Determines whether the value is equal to 7.
+     * @param n the value to compare
+     * @return  whether the value is a bad number
+     **/
 
-        // The initial value of the die.
+    private static boolean isBadNumber(int n)
+    {
+        return n == 7; 
+    }
 
-        public int value = 0;
+    /**
+     * Generates a random integer within range of 1 to 6.
+     * @return a random integer.
+     **/
 
-        /**
-         * Sets the value to a random integer.
-         **/
-        void roll ()
-        {
-            value = randomInt(); 
-        }
-
-        /**
-         * Generates a random integer within range of 1 to (MAX_VALUE).
-         * @return a random integer between 1 and (MAX_VALUE).
-         **/
-        private int randomInt ()
-        {
-            Random generator = new Random(); 
-            return generator.nextInt(MAX_VALUE - 1) + 1;
-        }
-
+    private static int randomInt ()
+    {
+        Random generator = new Random(); 
+        return generator.nextInt(5) + 1;
     }
 
 }
