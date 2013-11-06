@@ -43,13 +43,22 @@ class Guess
         // Keep guessing until the correct answer has been guessed.
 
         while (guessing) {
+
             // Set the value of the guess.
 
             guess = (max - min) / 2 + min;
 
+            // Increment the number of guesses
+
+            guesses++;
+
+            // Ask for guess feedback
+
             System.out.print("Is it " + guess + "? (type s, b, or c): ");
             answer = in.nextLine();
             letter = answer.charAt(0);
+
+            // Digest response
 
             if (letter == 's') {
                 max = guess;
@@ -57,22 +66,10 @@ class Guess
                 min = guess;
             } else if (letter == 'c') {
                 guessing = false;
-
-                // Ensure the singular form is used when relevant.
-
-                if (guesses > 1) {
-                    System.out.print("I got it after making just " + guesses + " guesses");
-                } else {
-                    System.out.print("I got it after making just " + guesses + " guess");
-                }
-
-                continue;
+                System.out.print("I got it after making just " + guesses + " guesses");
             } else {
                 System.out.println("Invalid answer.");
-                continue;
             }
-
-            guesses++;
         }
     }
 
