@@ -43,17 +43,7 @@ ____________________________________________________
 
 A5.
 
-static boolean isJavaIdentifierStart (char ch)
+boolean isJavaIdentifierStart (char ch)
 {
-  boolean result = false;
-
-  if (Character.isLetter(ch)) {
-    result = true;
-  } else if (Character.getType(ch) == Character.CURRENCY_SYMBOL) {
-    result = true; 
-  } else if (Character.getType(ch) == Character.CONNECTOR_PUNCTUATION) {
-    result = true; 
-  }
-
-  return result;
+    return (ch == 36 || ch == 95 || (ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122));
 }
