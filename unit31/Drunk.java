@@ -1,5 +1,5 @@
 /**
- * Walks a student home (spoiler: she's drunk).
+ * Prints the results of a student's walk home (spoiler: she's drunk).
  * @author Ryan Closner
  * @version 11/5/2012
  **/
@@ -8,27 +8,33 @@ import java.util.*;
 
 class Drunk
 {
-    // Instantiate location variables
+    // Number of times to try drunk-walking home.
+
+    private static final int N = 5;
+
+    // Instantiate location variables.
 
     private static final int START = 5;
     private static final int HOME = 0;
     private static final int JAIL = 10;
 
-    // Number of times to walk
-
-    private static final int N = 5;
-
-    // Drunk walk N times
+    // Drunk walk N times.
 
     public static void main (String[] args)
     {
+        // Instantiate variables
+
         int steps;
         String location;
+        float total = 0;
+        float average;
+
+        // Walk N times.
 
         for (int i = 0; i < N; i++) {
             steps = drunkWalk(); 
 
-            // If steps is negative, student is in jail. Otherwise she is at home.
+            // If steps are negative, student is in jail. Otherwise she is at home.
 
             if (steps < 0) {
                 steps = steps * -1; 
@@ -43,7 +49,19 @@ class Drunk
             System.out.println("Took " + steps + " steps, and");
             System.out.println("Landed " + location);
             System.out.println();
+
+            // Add the number of steps to the total.
+            
+            total += steps;
         }
+
+        // Calculate the average.
+
+        average = total / N;
+
+        // Print the average.
+
+        System.out.println("Average # of steps equals " + average);
     }
 
     /**
