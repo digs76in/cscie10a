@@ -1,0 +1,66 @@
+1-a). false 
+1-b), 13
+1-c). 7
+1-d). 7
+1-e).  Java
+1-f). va, Java, J
+
+2).
+
+public static void printLetters (String text)
+{
+  for (int i = 0; i < text.length(); i++) {
+      System.out.print( text.charAt(i) );
+      if (i != text.length() - 1) {
+          System.out.print("-");
+      }
+  }
+
+  System.out.println();
+}
+
+3).
+
+class Pet
+{
+
+    String name;
+    int age;
+    double weight;
+
+    Pet (String startName, int startAge)
+    {
+        name = startName; 
+        age = startAge;
+        weight = 0.0;
+    }
+
+    Pet (String startName, int startAge, double startWeight)
+    {
+        name = startName; 
+        age = startAge;
+        weight = startWeight;
+    }
+
+}
+
+4). This method is an approximation of the Java method 'substring'. It takes a String (s) and an integer (n) then returns the substring of (s): 0 through (n-1). If (n) is 0, it returns an empty string.
+
+5).
+
+String sentenceType (String sentence)
+{
+
+    char c = sentence.charAt(sentence.length() - 1);
+
+    if (c == '?') {
+        return "interrogative";
+    } else if (c == '!') {
+        return "exclamatory";
+    } else if (c == '.') {
+        return "declarative";
+    } else {
+        return "bad ending";
+    }
+
+}
