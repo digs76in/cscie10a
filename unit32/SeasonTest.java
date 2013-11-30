@@ -16,64 +16,23 @@ public class SeasonTest
     private static final String SUMMER = "Summer";
     private static final String FALL   = "Fall";
 
+    private static final String IMPOSSIBLE = "Impossible!";
+
     public static void main (String[] args)
     {
 
         // Grab input from user.
 
         Scanner in = new Scanner( System.in );
-        System.out.print("Please enter a month: ");
+        System.out.print( "Please enter a month: " );
         int month = in.nextInt(); 
-        System.out.print("Please enter a day: ");
+        System.out.print( "Please enter a day: " );
         int day = in.nextInt();
 
-        // Validate user input and print season if valid.
+        // Print the season
 
-        if (validateInput(month, day)) {
-            System.out.println( "The season is: " + season(month, day) );
-        } else {
-            System.out.println("Impossible!");
-        }
+        System.out.println( "The season is: " + season(month, day) );
     }
-
-    /**
-     * Determines whether the value is a valid date.
-     * @param month the inputted month
-     * @param day   the inputted day
-     * @return      whether the value is a valid date.
-     **/
-
-    private static boolean validateInput (int month, int day)
-    {
-        // Quick day check.
-
-        if (day <= 0 || day > 31) {
-            return false; 
-        }
-
-        // Quick month check.
-
-        if (month <= 0 || month > 12) {
-            return false; 
-        }
-
-        // Check months with 30 days.
-
-        if ((month == 9 || month == 4 || month == 6 || month == 11) && (day > 30)) {
-            return false;
-        }
-
-        // Check February.
-
-        if (month == 2 && day > 28) {
-            return false; 
-        }
-
-        // Valid date.
-
-        return true;        
-    }
-
     /**
      * Determines what season a date falls within.
      * @param month the month
@@ -83,6 +42,8 @@ public class SeasonTest
 
     private static String season (int month, int day)
     {
+
+        if ( invalidDate(month, day) ) return IMPOSSIBLE;
 
         // Determine what range the date falls within.
 
@@ -132,4 +93,44 @@ public class SeasonTest
 
         return false;
     }
+
+    /**
+     * Determines whether the value is a valid date.
+     * @param month the inputted month
+     * @param day   the inputted day
+     * @return      whether the value is a valid date.
+     **/
+
+    private static boolean invalidDate (int month, int day)
+    {
+        // Quick day check.
+
+        if (day <= 0 || day > 31) {
+            return true; 
+        }
+
+        // Quick month check.
+
+        if (month <= 0 || month > 12) {
+            return true; 
+        }
+
+        // Check months with 30 days.
+
+        if ((month == 9 || month == 4 || month == 6 || month == 11) && (day > 30)) {
+            return true;
+        }
+
+        // Check February.
+
+        if (month == 2 && day > 28) {
+            return true; 
+        }
+
+        // Valid date.
+
+        return false;
+    }
+
+
 }
