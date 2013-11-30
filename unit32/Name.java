@@ -23,7 +23,7 @@ public class Name
     Name (String startFirst, char startMiddle, String stringLast)
     {
         first  = startFirst; 
-        middle = Character.toString(startMiddle);
+        middle = startMiddle + "";
         last   = stringLast;
     }
 
@@ -96,8 +96,7 @@ public class Name
         for (int i = 0; i < items.length; i++) {
             item = items[i];
             if (item != null) {
-                if (i != 0) str += seperator;
-                str += item;
+                str += (i == 0) ? ("" + item) : ("" + seperator + item);
             }
         }
         return str;
