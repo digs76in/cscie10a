@@ -13,7 +13,7 @@ public class RealEstate
         // Get user input
 
         Scanner in = new Scanner( System.in );
-        System.out.print("Please enter a real estate ad: ");
+        System.out.print( "Please enter a real estate ad: " );
         String ad = in.nextLine();
 
         // Print the ad without vowels.
