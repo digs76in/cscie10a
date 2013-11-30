@@ -9,9 +9,9 @@ public class Name
 
     // Initialize the attributes
 
-    String first  = "";
-    String middle = "";
-    String last   = "";
+    String first  = null;
+    String middle = null;
+    String last   = null;
 
     /**
      * Name constructor
@@ -23,7 +23,7 @@ public class Name
     Name (String startFirst, char startMiddle, String stringLast)
     {
         first  = startFirst; 
-        middle = startMiddle + ".";
+        middle = Character.toString(startMiddle);
         last   = stringLast;
     }
 
@@ -46,11 +46,7 @@ public class Name
 
     public String getNormalOrder ()
     {
-        String str = "";
-        str += first;
-        if (middle != "") str += " " + middle;
-        str += " " + last;
-        return str;
+        return join( " ", first, joinIf( middle != null, "", middle, "." ), last );
     }
 
     /**
@@ -60,11 +56,7 @@ public class Name
 
     public String getReverseOrder ()
     {
-        String str = "";
-        str += last;
-        str += ", " + first;
-        if (middle != "") str += " " + middle;
-        return str; 
+        return join( " ", join("", last, ","), first, joinIf(middle != null, "", middle, ".") );
     }
 
     /**
@@ -74,10 +66,40 @@ public class Name
 
     public String getInitials ()
     {
+        return join( "", first.charAt(0), middle, last.charAt(0) );
+    }
+
+    /**
+     * Delegates to join if the condition is true, else returns null
+     * @param condition a truthy/falsy value
+     * @param seperator see #join
+     * @param items     see #join
+     * @return          a null or a String
+     **/
+
+    private String joinIf(boolean condition, Object seperator, Object... items)
+    {
+        return condition? join(seperator, items) : null;
+    }
+
+    /**
+     * Concatenates a list of arguments into a String
+     * @param seperator the item to insert between args
+     * @param items     items to concatenate
+     * @return the joined String
+     **/
+
+    private String join (Object seperator, Object... items)
+    {
         String str = ""; 
-        str += first.charAt(0);
-        if (middle != "") str += middle.charAt(0);
-        str += last.charAt(0);
+        Object item;
+        for (int i = 0; i < items.length; i++) {
+            item = items[i];
+            if (item != null) {
+                if (i != 0) str += seperator;
+                str += item;
+            }
+        }
         return str;
     }
 
