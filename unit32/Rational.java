@@ -18,27 +18,33 @@ class Rational
 		int b = d;
 
 		//implement Euclid's algorithm here
-      
+
 		int remainder = a % b;
-		while (remainder != 0)
-		{
+
+		while (remainder != 0) {
 			a = b;
 			b = remainder;
-            remainder = a % b;
+			remainder = a % b;
 		}
+
 		numerator = n / b;
 		denominator = d / b;
 	}
 
-    /**
-     * Determines whether rational is less than another
-     * @param r another rational
-     * @return  whether the rational is less than the instance
-     **/
+	/**
+	* Determines whether rational is less than another
+	* @param r another rational
+	* @return  whether the rational is less than the instance
+	**/
 
-    public boolean lessThanRat(Rational r)
-    {
-        return ((numerator * 1.0) / (denominator * 1.0)) < ((r.numerator * 1.0) / (r.denominator * 1.0));
-    }
+	public boolean lessThanRat(Rational r)
+	{
+		return ((numerator * 1.0) / (denominator * 1.0)) < ((r.numerator * 1.0) / (r.denominator * 1.0));
+	}
+
+	public String toString()
+	{
+		return ""  + numerator + "/" + denominator;
+	}
 
 }

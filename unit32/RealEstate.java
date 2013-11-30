@@ -28,7 +28,7 @@ public class RealEstate
 
     private static void printAd (String ad)
     {
-        System.out.print( removeVowels(ad) );
+        System.out.println( removeVowels(ad) );
     }
 
     /**

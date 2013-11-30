@@ -13,10 +13,17 @@ public class RationalTest
         Rational a = new Rational( 8, 16 );
         Rational b = new Rational( 2, 3 );
 
-        // Test 3 cases
+        // Test 4 cases
 
-        System.out.println(a.lessThanRat(b));
-        System.out.println(b.lessThanRat(a));
-        System.out.println(a.lessThanRat(a));
+        printTest(a,b);
+        printTest(b,a);
+        printTest(a,a);
+        printTest(b,b);
     }
+
+    private static void printTest (Rational a, Rational b)
+    {
+      System.out.println( a.toString() + " < " + b.toString() + " is " + a.lessThanRat(b) );
+    }
+
 }
