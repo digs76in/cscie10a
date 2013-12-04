@@ -1,0 +1,102 @@
+1a) 
+
+boolean[] answers = new boolean[11];
+
+for (int i = 0; i < 20; i++) {
+  answers[i] = i % 2 == 0;
+}
+
+1b) 
+
+int[] sizes = new int[11];
+
+for (int i = 0; i < 11; i++) {
+  sizes[i] = i * 2;
+}
+
+1c)
+
+int[][] inches = new int[5][12];
+
+for (int i = 0; i < 5; i++) {
+  for (int j = 0; j < 12; j++) {
+    inches[i][j] = i * j * 2;
+  }
+}
+
+1d)
+
+class Candidate
+{
+  private String name;
+  private int votes;
+}
+
+Candidate[] candidates = new Candidate[8];
+
+for (int i = 0; i < 8; i++) {
+  candidates[i] = new Candidate;
+}
+
+2)
+
+class Foobar
+{
+  public static void main (String[] args)
+  {
+
+    int[] r = new int[20];
+
+    for (int i = 0; i < r.length; i++) {
+      r[i] = (int)(Math.random() * 100);
+    }
+
+  }
+}
+
+3a)
+
+for (int i = 0; i < SIZE; i++) {
+  sample[i] = 5;
+}
+
+3b)
+
+int tmp = sample[0];
+sample[0] = sample[SIZE - 1];
+sample[SIZE - 1] = tmp;
+
+3c)
+
+for (int i = 0; i < SIZE; i++) {
+  sample[i] = (sample[i] < 0) ? sample[i] * -1 : sample[i];
+}
+
+3d)
+
+for (int i = 0; i < SIZE; i++) {
+  if (i % 2 != 0) System.out.print( sample[i] );
+}
+
+4)
+
+int count = 0;
+int total = 0;
+
+for (int i = 0; i < foobar.length; i++) {
+  for (int j = 0; j < foobar[i].length; j++) {
+    total += foobar[i][j].length();
+    count++; 
+  }
+}
+
+System.out.print(total / count);
+
+4)
+
+char X = 'X';
+char O = 'O';
+
+char BLANK = ' ';
+
+char[][] ticTacToe = { { O, BLANK, BLANK }, { BLANK, X, O }, { X, O, X } };
