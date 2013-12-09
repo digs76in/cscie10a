@@ -1,34 +1,65 @@
+/**
+ * Counts how many items in an array fall within a range
+ * @author Ryan Closner
+ * @version 12/3/2012
+ **/
+
 import java.util.*;
 
 class Six
 {
-  final static int SIZE = 5;
 
-  public static void main (String[] args)
-  {
-    Scanner in = new Scanner(System.in);
+    // The number of items to insert into Array
 
-    int range[] = new int[SIZE];
-    System.out.print("Please enter "+ SIZE +" numbers: ");
-    for (int i = 0; i < SIZE; i++) {
-      range[i] = in.nextInt();
+    final static int SIZE = 5;
+
+    public static void main (String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+
+        // Gather array of ints to test against
+
+        int list[] = new int[SIZE];
+        System.out.print("Please enter "+ SIZE +" numbers: ");
+        for (int i = 0; i < SIZE; i++) {
+            list[i] = in.nextInt();
+        }
+
+        // Gather min of range
+
+        System.out.print("Please enter a min value: ");
+        int min = in.nextInt();
+
+        // Gather max of range
+
+        System.out.print("Please enter a max value: ");
+        int max = in.nextInt();
+
+        // Print the number of items in Array that fall within range
+
+        System.out.println("The total number of elements within range are: " + countInRange(min, max, list));
     }
 
-    System.out.print("Please enter a min value: ");
-    int min = in.nextInt();
+    /**
+     * Counts the number of items in array that fall within range
+     * @param min  the range minimum 
+     * @param max  the range maximum
+     * @param list the Array to check against
+     * @return     the number of items in list that fall within min..max
+     **/
 
-    System.out.print("Please enter a max value: ");
-    int max = in.nextInt();
+    private static int countInRange (int min, int max, int[] list)
+    {
+        // Set count to 0
 
-    System.out.println("The total number of elements within range are: " + countInRange(min, max, range));
-  }
+        int count = 0; 
 
-  private static int countInRange (int min, int max, int[] range)
-  {
-    int count = 0; 
-    for (int i = 0; i < range.length; i++) {
-      if (range[i] <= max && range[i] >= min) count++;
+        // Count the number of items that fall within min..max
+
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] <= max && list[i] >= min) count++;
+        }
+
+        return count;
     }
-    return count;
-  }
 }

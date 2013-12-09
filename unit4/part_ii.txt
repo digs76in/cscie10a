@@ -1,26 +1,33 @@
 1a) 
 
-boolean[] answers = new boolean[11];
+final int NUM_ANSWERS = 20;
 
-for (int i = 0; i < 20; i++) {
-  answers[i] = i % 2 == 0;
+boolean[] answers = new boolean[NUM_ANSWERS];
+
+for (int i = 0; i < NUM_ANSWERS; i++) {
+  answers[i] = (int)( Math.random() ) % 2 == 0;
 }
 
 1b) 
 
-int[] sizes = new int[11];
+final int NUM_YEARS = 11;
 
-for (int i = 0; i < 11; i++) {
+int[] sizes = new int[NUM_YEARS];
+
+for (int i = 0; i < NUM_YEARS; i++) {
   sizes[i] = i * 2;
 }
 
 1c)
 
-int[][] inches = new int[5][12];
+final int NUM_MONTHS = 12;
+final int NUM_YEARS  = 5;
 
-for (int i = 0; i < 5; i++) {
-  for (int j = 0; j < 12; j++) {
-    inches[i][j] = i * j * 2;
+int[][] inches = new int[NUM_YEARS][NUM_MONTHS];
+
+for (int i = 0; i < NUM_YEARS; i++) {
+  for (int j = 0; j < NUM_MONTHS; j++) {
+    inches[i][j] = Math.random();
   }
 }
 
@@ -32,10 +39,12 @@ class Candidate
   private int votes;
 }
 
-Candidate[] candidates = new Candidate[8];
+final int NUM_CANDIDATES = 8;
 
-for (int i = 0; i < 8; i++) {
-  candidates[i] = new Candidate;
+Candidate[] candidates = new Candidate[NUM_CANDIDATES];
+
+for (int i = 0; i < NUM_CANDIDATES; i++) {
+  candidates[i] = new Candidate();
 }
 
 2)

@@ -1,96 +1,162 @@
+/**
+ * A Game of Tic Tac Toe
+ * @author Ryan Closner
+ * @version 12/3/2012
+ **/
+
 import java.util.*;
 
 public class TicTacToe
 {
 
-  private boolean playing = true;
-  private Scanner in = new Scanner(System.in);
-  private String playerOne;
-  private String playerTwo;
-  private int turn = 0;
-  private TicTacToeBoard board = new TicTacToeBoard();
+    // Declare scanner variable
 
-  private void win ()
-  {
-    playing = false; 
-    System.out.println("Game Over - "+ current() +" WINS!!!");
-  }
+    private Scanner in;
 
-  private void tie ()
-  {
-    playing = false;
-    System.out.println("Game Over - Tie!!!");
-  }
+    // Declare player variables
 
-  private String current ()
-  {
-    return (turn % 2 == 0) ? playerTwo : playerOne; 
-  }
+    private TicTacToePlayer playerOne;
+    private TicTacToePlayer playerTwo;
+    private TicTacToePlayer currentPlayer;
 
-  private void move ()
-  {
-    // Get move location
+    // Instantiate board variables
 
-    System.out.print("Pick a row between 1 and 3: ");
-    int row = in.nextInt();
+    private TicTacToeBoard board = new TicTacToeBoard();
 
-    System.out.print("Pick a column between 1 and 3: ");
-    int col = in.nextInt();
+    // Instantiate game variables
 
-    // If valid move, fill the square and print the board
+    private boolean playing = true;
 
-    if ( row > 0 && row < 4 && col > 0 && col < 4 && board.canMove(row, col) ) {
-      board.move(turn % 2, row, col);
-      System.out.println("Game board:");
-      System.out.println(board.toString());
-    } else {
-      System.out.println("ILLEGAL CHOICE! TRY AGAIN...");
-      move(); 
+    /**
+     * Constructor for TicTacToe
+     **/
+
+    TicTacToe (Scanner startIn, TicTacToePlayer one, TicTacToePlayer two)
+    {
+        in = startIn;
+        playerOne = one; 
+        playerTwo = two;
     }
-  }
 
-  public void play ()
-  {
-    System.out.println("Welcome! Tic-Tac-Toe is a two player game.");
+    /**
+     * Plays the game until someone has won
+     **/
 
-    // Get Player Names
+    public void play ()
+    {
+        int turn = 0;
 
-    System.out.print("Enter player one's name: ");
-    playerOne = in.nextLine();
+        // Play while flag is true
 
-    System.out.print("Enter player two's name: ");
-    playerTwo = in.nextLine();
+        while (playing) {
+            // Increment turn
 
-    // Give instructions
+            turn++;
 
-    System.out.println("Players take turns marking a square. Only squares");
-    System.out.println("not already marked can be picked. Once a player has");
-    System.out.println("marked three squares in a row, he or she wins! If all squares");
-    System.out.println("are marked and no three squares are the same, a tied game is declared.");
-    System.out.println("Have Fun!");
+            // Set current player
 
-    while (playing) {
+            currentPlayer = (turn % 2 == 1) ? playerOne : playerTwo;
 
-      // Increment the turn
+            // Attempt a move
 
-      turn++;
+            System.out.println("It is " + currentPlayer.name + "'s turn.");
+            move();
 
-      // Get the move
 
-      System.out.println("It is " + current() + "'s turn.");
-      move();
+            // End the game if tie or win
 
-      // End the game if possible
-      
-      if (board.isWin()) win();
-      if (board.isTie()) tie();
+            if ( board.isWin() ) win();
+            if ( board.isTie() ) tie();
+        }
     }
-  }
 
-  public static void main (String[] args)
-  {
-    TicTacToe game = new TicTacToe();
-    game.play();
-  }
+    /**
+     * Ends the game and prints winning message
+     **/
+
+    public void win ()
+    {
+        playing = false;
+        System.out.println("Game Over - " + currentPlayer.name + " WINS!!!");
+    }
+
+    /**
+     * Ends the game and prints tie message
+     **/
+
+    public void tie ()
+    {
+        playing = false;
+        System.out.println("Game Over - Tie Game!!!");
+    }
+
+    /**
+     * Gets the desired move, and attempts the move
+     * If  the current move is illegal, it gets another move 
+     * from the player. If it is legal, it makes the move.
+     **/
+
+    private void move ()
+    {
+        // Get row
+
+        System.out.print("Pick a row between 1 and 3: ");
+        int y = in.nextInt() - 1;
+
+        // Get column
+
+        System.out.print("Pick a column between 1 and 3: ");
+        int x = in.nextInt() - 1;
+
+        // If legal move, fill the square and print the board
+
+        try {
+            board.setPosition( x, y, currentPlayer.marker );
+            System.out.println( board.toString() );
+        } catch (IllegalArgumentException e) {
+            System.out.println("ILLEGAL CHOICE! TRY AGAIN...");
+            move();
+        }
+    }
+
+    public static void main (String[] args)
+    {
+        String name;
+        Scanner in = new Scanner( System.in );
+
+        // Print introduction
+
+        System.out.println("Welcome! Tic-Tac-Toe is a two player game.");
+
+        // Create player one
+
+        System.out.print("Enter player one's name: ");
+        name = in.nextLine();
+
+        TicTacToePlayer one = new TicTacToePlayer(name, 'X');
+
+        // Create player two
+
+        System.out.print("Enter player two's name: ");
+        name = in.nextLine();
+
+        TicTacToePlayer two = new TicTacToePlayer(name, 'O');
+
+        // Create game
+
+        TicTacToe game = new TicTacToe(in, one, two);
+
+        // Print instructions
+
+        System.out.println("Players take turns marking a square. Only squares");
+        System.out.println("not already marked can be picked. Once a player has");
+        System.out.println("marked three squares in a row, he or she wins! If all squares");
+        System.out.println("are marked and no three squares are the same, a tied game is declared.");
+        System.out.println("Have Fun!\n");
+
+        // Play game
+
+        game.play();
+    }
 
 }
