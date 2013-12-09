@@ -65,8 +65,11 @@ public class TicTacToe
 
             // End the game if tie or win
 
-            if ( board.isWin() ) win();
-            if ( board.isTie() ) tie();
+            if ( board.isWin() ) {
+                win();
+            } else if ( board.isTie() ) {
+                tie(); 
+            }
         }
     }
 
